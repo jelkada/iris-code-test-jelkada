@@ -1,1 +1,37 @@
-<p>Display the subdivision data here!</p>
+<div class="d-flex flex-column p-2">
+
+  <div class="m-3 mb-0 d-flex justify-content-center align-items-center">
+    <div class="fs-6 fw-bold pe-3">Filter:</div>
+    <div>
+      <mat-button-toggle-group value="All">
+        <mat-button-toggle *ngFor="let option of filterOptions" [value]="option" (change)="onFilterChange($event)">
+          {{option}}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <table
+    class="m-3"
+    mat-table 
+    [dataSource]="dataSource"
+    matSort
+    #tableSort="matSort"
+  >
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th class="p-3" mat-header-cell mat-sort-header *matHeaderCellDef>{{ column }}</th>
+      <td class="p-3" mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator #paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+
+</div>
