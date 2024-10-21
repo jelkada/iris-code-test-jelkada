@@ -5,7 +5,7 @@ export enum FilterType {
   All = 'All',
   Active = 'Active',
   Future = 'Future',
-  BuildOut = 'Build'
+  BuildOut = 'Build out'
 };
 
 export enum FilterApiType {

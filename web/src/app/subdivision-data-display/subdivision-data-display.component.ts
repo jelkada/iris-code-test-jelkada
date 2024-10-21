@@ -30,9 +30,7 @@ export class SubdivisionDataDisplayComponent implements OnInit {
     this.subdivisionService.getSubdivisionData()
       .pipe(take(1))
       .subscribe(((data: SubdivisionData[]) => {
-        console.log('\n data: ', data);
         this.displayedColumns = Object.keys(data[0]);
-        console.log('\n this.displayedColumns: ', this.displayedColumns);
         this.allSubdivisionData = data;
         this.dataSource.data = data;
         this.dataSource.paginator = this.paginator as MatPaginator;
@@ -41,8 +39,6 @@ export class SubdivisionDataDisplayComponent implements OnInit {
   }
 
   onFilterChange($event: MatButtonToggleChange): void {
-    console.log('\n $event: ', $event);
-
     if ($event.value === FilterType.All) {
       this.dataSource.data = this.allSubdivisionData;
     } else {

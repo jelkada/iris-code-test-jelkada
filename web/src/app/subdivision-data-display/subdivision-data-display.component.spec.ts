@@ -46,6 +46,7 @@ describe('SubdivisionDataDisplayComponent', () => {
 
 
   it('should populate the table with data', () => {
+    expect(subdivisionService.getSubdivisionData).toHaveBeenCalled();
     expect(component.dataSource.data.length).toEqual(mockSubdivisionApiResponse.subdivisions.length);
   });
 
